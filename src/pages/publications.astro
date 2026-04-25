@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Publications';
+const description = 'Journal publications and patents by Sharun Kuhar.';
+const permalink = `${Astro.site?.href}publications`;
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="publications">
+	<div class="container">
+		<h1>Publications</h1>
+
+		<h2>Journal Papers</h2>
+		<ol reversed class="pub-list">
+			<li>
+				S. Kuhar, J. H. Seo, and R. Mittal,
+				<strong>"In-silico study of the forces causing solid food breakdown inside the stomach,"</strong>
+				<em>Journal of the Royal Society Interface</em>, 22.229, 2025.
+				<a href="https://doi.org/10.1098/rsif.2025.0291" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				S. Kuhar, J. H. Seo, M. Camilleri, P. J. Pasricha, and R. Mittal,
+				<strong>"Duodenogastric Reflux in Health and Disease: Insights from a Computational Fluid Dynamics Model of the Stomach,"</strong>
+				<em>American Journal of Physiology-Gastrointestinal and Liver Physiology</em>, 328.4, 2025.
+				<a href="https://doi.org/10.1152/ajpgi.00241.2024" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				W. Li, S. Kuhar, J. H. Seo, and R. Mittal,
+				<strong>"Modeling the Effect of Sleeve Gastrectomy on Gastric Digestion in Stomach: Insights from Multiphase Flow Modeling,"</strong>
+				<em>Journal of Biomechanical Engineering</em>, 147.6, 2025.
+				<a href="https://doi.org/10.1115/1.4068373" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				W. Li, S. Kuhar, J. H. Seo, and R. Mittal,
+				<strong>"Computational Study of Gastric Emptying in Microgravity: The Role of Density and Viscosity Variations,"</strong>
+				<em>Physics of Fluids</em>, 37.7, 2025.
+				<a href="https://doi.org/10.1063/5.0278357" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal,
+				<strong>"In silico modelling of the effect of pyloric intervention procedures on gastric flow and emptying in a stomach with gastroparesis,"</strong>
+				<em>Journal of the Royal Society Interface</em>, 21(210), 2024.
+				<a href="https://doi.org/10.1098/rsif.2023.0567" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				S. Kuhar and R. Mittal,
+				<strong>"Computational Models of the Fluid Mechanics of the Stomach,"</strong>
+				<em>Journal of the Indian Institute of Science</em>, 104.1, 2024.
+				<a href="https://doi.org/10.1007/s41745-024-00421-z" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal,
+				<strong>"Effect of stomach motility on food hydrolysis and gastric emptying: Insight from computational models,"</strong>
+				<em>Physics of Fluids</em>, 34(11), 111909, 2022.
+				<a href="https://doi.org/10.1063/5.0120933" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				J. H. Lee, S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal,
+				<strong>"Computational modeling of drug dissolution in the human stomach: Effects of posture and gastroparesis on drug bioavailability,"</strong>
+				<em>Physics of Fluids</em>, 34(8), 081904, 2022.
+				<a href="https://doi.org/10.1063/5.0096877" target="_blank" rel="noopener">[doi]</a>
+			</li>
+			<li>
+				B. Bharathan, M. McGuinness, S. Kuhar, M. Kermani, F. P. Hassani, and A. P. Sasmito,
+				<strong>"Pressure loss and friction factor in non-Newtonian mine paste backfill: Modelling, loop test and mine field data,"</strong>
+				<em>Powder Technology</em>, 344, 2019.
+				<a href="https://doi.org/10.1016/j.powtec.2018.12.029" target="_blank" rel="noopener">[doi]</a>
+			</li>
+		</ol>
+
+		<hr />
+
+		<h2>Patents</h2>
+		<ol reversed class="pub-list">
+			<li>
+				S. Kuhar, V. Shukla, S. Sharma, and K. Sahoo,
+				<strong>"Ribbed and grooved cable having embedded strength member with water blocking coating,"</strong>
+				U.S. Patent Application 17/347,080 (Granted: 2023).
+				<a href="https://patents.google.com/patent/US20210389542A1/en" target="_blank" rel="noopener">[link]</a>
+			</li>
+			<li>
+				H. Kondapalli, S. Sharma, S. Kuhar, A. Nath, V. Shukla, and B. Sarkaar,
+				<strong>"Intermittently bonded optical fibre ribbon with unequal bond and gap lengths,"</strong>
+				U.S. Patent Application 17/139,508 (Granted: 2023).
+				<a href="https://patents.google.com/patent/US20210271039A1/en" target="_blank" rel="noopener">[link]</a>
+			</li>
+		</ol>
+	</div>
+</BaseLayout>
+
+<style>
+	.pub-list {
+		padding-left: 2.5rem;
+	}
+
+	.pub-list li {
+		margin: 1.2em 0;
+		line-height: 1.6;
+	}
+
+	.pub-list li a {
+		white-space: nowrap;
+	}
+</style>

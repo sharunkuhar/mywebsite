@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'About';
-const description = 'About your blog.';
+const description = 'About Sharun Kuhar — computational engineer and fluid dynamicist.';
 const permalink = `${Astro.site?.href}about`;
 const base = import.meta.env.BASE_URL;
 ---
@@ -11,25 +11,234 @@ const base = import.meta.env.BASE_URL;
 	<div class="container">
 		<h1>About</h1>
 		<figure class="about-image">
-			<img src={`${base}assets/about-illustration.webp`} alt="Illustration of a notebook" width="330" />
-			<figcaption>
-				Illustration by
-				<a
-					href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6"
-					target="_blank"
-					rel="noopener">Icons 8</a
-				>
-				from
-				<a href="https://icons8.com/illustrations" target="_blank" rel="noopener">Ouch!</a>
-			</figcaption>
+			<img src={`${base}assets/portrait.jpg`} alt="Sharun Kuhar" />
 		</figure>
+		<h2>Hi! I am Sharun Kuhar.</h2>
 		<p>
-			This is a placeholder about page. Replace this content with information about yourself,
-			your blog, and what you write about.
+			I am a Postdoctoral Researcher at <strong>Purdue University</strong> (Complex Flow Lab) and a <strong
+				>Quad Fellow</strong
+			>, specializing in high-fidelity computational modeling of biological systems. My work bridges
+			the gap between mechanical engineering and clinical medicine, using advanced CFD to solve
+			complex problems in drug delivery and physiological flows.
 		</p>
 		<p>
-			You can customize this page however you like. Add your bio, your interests, links to your
-			social media, or anything else you want your readers to know about you.
+			Currently, I am conducting research into the tools and methods that help develop an
+			understanding of the physiology and structure related to various routes of administration in
+			drug delivery. Previously, I completed my Ph.D. at <strong>Johns Hopkins University</strong>,
+			where I built first-of-their-kind "digital twin" models of the human stomach to analyze
+			digestion and gastric motility. Before that, I earned my B.E. and M.E. from <strong
+				>IIT Kanpur</strong
+			>.
+		</p>
+
+		<hr />
+
+		<h2>Education</h2>
+		<p>
+			<strong>Ph.D. in Mechanical Engineering</strong> — Sep. 2020 – Apr. 2025<br />
+			Johns Hopkins University, Baltimore, MD<br />
+			Dissertation: <em
+				>Computational fluid dynamics based models of gastric digestion in health and disease</em
+			><br />
+			Advisor: Rajat Mittal
+		</p>
+		<p>
+			<strong>B.E. + M.E. in Mechanical Engineering</strong> — 2014 – 2019<br />
+			Indian Institute of Technology, Kanpur (5-year program), UP, India<br />
+			GPA: 9.9/10.0 in B.E. &amp; 10.0/10.0 in M.E.<br />
+			Dissertation: <em
+				>DNS and Stability Analysis of Flow Past a Square Cylinder Placed in a Channel</em
+			><br />
+			Advisor: Arun K. Saha
+		</p>
+
+		<hr />
+
+		<h2>Honors and Awards</h2>
+		<ul>
+			<li>
+				<strong>Creel Family Teaching Assistant Award</strong> (2025) — Recognizes the best teaching assistants
+				in the mechanical engineering department. <a
+					href="https://me.jhu.edu/news/2025-academic-award-winners-recognized-at-commencement-luncheon/"
+					target="_blank"
+					rel="noopener">[link]</a
+				>
+			</li>
+			<li>
+				<strong>Quad Fellowship</strong> (2023) — Cohort of 100 graduate students in STEM from Australia,
+				India, Japan, and the USA. <a
+					href="https://www.quadfellowship.org/quad-fellows"
+					target="_blank"
+					rel="noopener">[link]</a
+				>
+			</li>
+			<li>
+				<strong>General Proficiency Medal</strong> (2019) — Graduated at the top of the department. <a
+					href="https://www.iitk.ac.in/doaa/convocation/data/52nd-Convocation2019_Awards_and_Honours.pdf"
+					target="_blank"
+					rel="noopener">[link]</a
+				>
+			</li>
+			<li>
+				<strong>O.P. Bajaj Memorial Award</strong> (2017) — Best final year undergraduate in the department.
+				<a href="https://www.iitk.ac.in/sspc/sspc-academic-awards" target="_blank" rel="noopener"
+					>[link]</a
+				>
+			</li>
+			<li>
+				<strong>Academic Excellence Awards</strong> (2018, 2016, 2015). <a
+					href="https://www.iitk.ac.in/sspc/sspc-academic-awards"
+					target="_blank"
+					rel="noopener">[link]</a
+				>
+			</li>
+			<li>
+				<strong>Summer Undergraduate Research Grant for Excellence (SURGE)</strong> (2016). <a
+					href="https://surge.iitk.ac.in/AnnualReport/report2016.pdf"
+					target="_blank"
+					rel="noopener">[link]</a
+				>
+			</li>
+		</ul>
+
+		<hr />
+
+		<h2>Research Experience</h2>
+
+		<h3>Purdue University <span class="dates">May 2025 – Present</span></h3>
+		<p class="role">
+			Postdoctoral Research (Advisor: Arezoo Ardekani), Department of Mechanical Engineering
+		</p>
+		<ul>
+			<li>
+				Developed a finite-element based poroelasticity solver using the open-source software
+				package FEniCS
+			</li>
+			<li>
+				Research into the physiology of drug delivery with the purpose of developing technologies to
+				improve delivery of pharmaceuticals for better patient outcomes
+			</li>
+			<li>
+				Developing improved delivery of injectable medicines with the goal of enabling better
+				patient compliance and overall health
+			</li>
+		</ul>
+
+		<h3>Johns Hopkins University <span class="dates">Sep. 2020 – Apr. 2025</span></h3>
+		<p class="role">
+			Ph.D. Thesis (Advisor: Rajat Mittal), Department of Mechanical Engineering, Baltimore, MD
+		</p>
+		<ul>
+			<li>
+				Developed an imaging data based computational model of the stomach using an immersed
+				boundary solver
+			</li>
+			<li>
+				Incorporated chemical reactions of food hydrolysis into the model to run chemo-fluid dynamic
+				simulations
+			</li>
+			<li>
+				Employed particle resolved simulations with 6-degrees-of-freedom to model tablets and large
+				food particles
+			</li>
+			<li>Built a pipeline for patient-specific stomach models using cine-MRI data</li>
+			<li>
+				Studied the effect of posture and motility disorders on the dissolution of an oral tablet
+			</li>
+			<li>
+				First of its kind modeling of the consequences of pyloric surgery in different emptying rate
+				disorder patients
+			</li>
+		</ul>
+
+		<h3>Sterlite Technologies <span class="dates">Jun. 2019 – Sep. 2020</span></h3>
+		<p class="role">
+			Modeling and Simulations Division, Research &amp; Development, Dadra &amp; Nagar Haveli, India
+		</p>
+		<ul>
+			<li>
+				Developed theoretical and semi-empirical models to predict the onset of signal attenuation
+				in fiber optic cable designs
+			</li>
+			<li>
+				Patented grooved cable designs with higher drag to enable air blowing cables to longer
+				distances
+			</li>
+			<li>
+				Patented flexible ribbon design to enable more efficient packing of fibers inside the cable
+			</li>
+		</ul>
+
+		<h3>Indian Institute of Technology, Kanpur <span class="dates">May 2018 – Jun. 2019</span></h3>
+		<p class="role">
+			Masters Thesis (Advisor: Arun K. Saha), Department of Mechanical Engineering, UP, India
+		</p>
+		<ul>
+			<li>
+				Studied the flow past a square cylinder at different blockages using a MAC-based solver
+			</li>
+			<li>
+				Developed a code to perform the linear stability analysis of the steady symmetric flow
+			</li>
+		</ul>
+
+		<h3>McGill University <span class="dates">May 2017 – Jul. 2017</span></h3>
+		<p class="role">
+			MITACS Globalink Summer Internship (Advisor: Agus P. Sasmito), Department of Mining
+			Engineering, Quebec, Canada
+		</p>
+		<ul>
+			<li>Studied the flow of mine backfill slurry through the hydraulic network in mines</li>
+			<li>
+				Modeled the slurry as a two-phase mixture using Dense Discrete Phase Model (DDPM) and as a
+				Bingham fluid
+			</li>
+		</ul>
+
+		<hr />
+
+		<h2>Teaching</h2>
+		<p><strong>Johns Hopkins University:</strong></p>
+		<ul>
+			<li>Numerical Methods, Fall 2021 and Fall 2023</li>
+			<li>Computational Fluid Dynamics, Spring 2022 and Spring 2024</li>
+		</ul>
+		<p><strong>IIT Kanpur:</strong></p>
+		<ul>
+			<li>Numerical Methods, Fall 2018</li>
+			<li>Turbulent Flow, Spring 2019</li>
+		</ul>
+
+		<hr />
+
+		<h2>Mentoring</h2>
+		<ul>
+			<li>PhD Students: Daira Sofia Velasco Vega, Purdue University — Aug. 2025 – Present</li>
+			<li>Masters Students: Weixuan Li, Johns Hopkins University — Aug. 2023 – Apr. 2025</li>
+			<li>Undergraduate Students: Aditi Gupta, Johns Hopkins University — May 2023 – Jul. 2023</li>
+		</ul>
+
+		<hr />
+
+		<h2>Contact</h2>
+		<p>
+			If you are interested in collaborating, please reach out via email: <strong
+				>kuhars AT purdue DOT edu</strong
+			>
+		</p>
+		<p>
+			<a href="https://www.linkedin.com/in/sharunkuhar" target="_blank" rel="noopener">LinkedIn</a> ·
+			<a
+				href="https://scholar.google.com/citations?user=qHP7cqgAAAAJ&hl=en&oi=ao"
+				target="_blank"
+				rel="noopener">Google Scholar</a
+			>
+		</p>
+
+		<hr />
+
+		<p class="site-credit">
+			Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>. Template by <a href="https://github.com/Charca/astro-blog-template" target="_blank" rel="noopener">Maxi Ferreira</a>.
 		</p>
 	</div>
 </BaseLayout>
@@ -38,12 +247,33 @@ const base = import.meta.env.BASE_URL;
 	.about-image {
 		float: right;
 		margin: -3em -7em 2em 2em;
-		max-width: 300px;
+		max-width: 200px;
 	}
 
 	.about-image img {
-		border-radius: 8px;
-		margin-bottom: 1.5em;
+		border-radius: 50%;
+	}
+
+	h3 {
+		margin-bottom: 0.2em;
+	}
+
+	.dates {
+		font-weight: 400;
+		font-size: 0.75em;
+		color: var(--text-secondary);
+	}
+
+	.role {
+		font-style: italic;
+		margin-top: 0;
+		color: var(--text-secondary);
+	}
+
+	.site-credit {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		text-align: center;
 	}
 
 	@media (max-width: 1020px) {

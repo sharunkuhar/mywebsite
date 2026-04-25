@@ -21,8 +21,7 @@ const base = import.meta.env.BASE_URL;
 		padding: 10px 5px;
 		display: block;
 		position: relative;
-		margin-left: 20px;
-		min-width: 70px;
+		margin-left: 15px;
 		text-align: center;
 	}
 
@@ -65,6 +64,8 @@ const base = import.meta.env.BASE_URL;
 <nav>
 	<a class={current === '' ? 'selected' : ''} href={base}>home</a>
 	<a class={current === 'about' ? 'selected' : ''} href={`${base}about/`}>about</a>
+	<a class={current === 'publications' ? 'selected' : ''} href={`${base}publications/`}>publications</a>
+	<a class={current === 'conferences' ? 'selected' : ''} href={`${base}conferences/`}>conferences</a>
 	<a class={current === 'blog' ? 'selected' : ''} href={`${base}blog/`}>blog</a>
 	<div class="theme-toggle-container">
 		<ThemeToggleButton />
