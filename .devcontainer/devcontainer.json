@@ -5,6 +5,7 @@
   },
   "remoteUser": "node",
   "forwardPorts": [4321],
+  "postCreateCommand": "npm install",
   "remoteEnv": {
     "CLAUDE_CODE_USE_FOUNDRY": "1",
     "ANTHROPIC_FOUNDRY_RESOURCE": "${localEnv:ANTHROPIC_FOUNDRY_RESOURCE}",
