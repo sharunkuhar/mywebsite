@@ -2,36 +2,30 @@
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
+import rehypeExternalLinks from 'rehype-external-links';
+import remarkGfm from 'remark-gfm';
+import remarkSmartypants from 'remark-smartypants';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://sharunkuhar.github.io',
 	base: '/mywebsite',
+	trailingSlash: 'always',
 	server: { host: true },
 	integrations: [mdx(), sitemap()],
-	fonts: [
-		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
+	markdown: {
+		shikiConfig: {
+			theme: 'nord',
 		},
-	],
+		remarkPlugins: [remarkGfm, remarkSmartypants],
+		rehypePlugins: [
+			[
+				rehypeExternalLinks,
+				{
+					target: '_blank',
+				},
+			],
+		],
+	},
 });

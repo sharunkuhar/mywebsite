@@ -1,15 +1,16 @@
 import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
 	const posts = await getCollection('blog');
 	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
+		title: 'My Astro Blog',
+		description: 'The perfect starter for your perfect blog.',
 		site: context.site,
 		items: posts.map((post) => ({
-			...post.data,
+			title: post.data.title,
+			pubDate: post.data.pubDate,
+			description: post.data.description,
 			link: `${import.meta.env.BASE_URL}blog/${post.id}/`,
 		})),
 	});
