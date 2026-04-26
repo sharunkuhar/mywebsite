@@ -17,7 +17,6 @@ type Props = { post: CollectionEntry<'blog'> };
 const { post } = Astro.props;
 const { title, description, pubDate } = post.data;
 const readingTimeEstimate = readingTime(post.body ?? '').text;
-const base = import.meta.env.BASE_URL;
 const permalink = `${Astro.site?.href}blog/${post.id}`;
 const { Content } = await render(post);
 const formattedDate = new Date(pubDate).toLocaleDateString('en-us', {
