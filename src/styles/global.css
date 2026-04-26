@@ -16,6 +16,7 @@
 
 html {
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 @supports (scrollbar-gutter: stable) {
@@ -38,6 +39,7 @@ body {
 	line-height: 1.6;
 	background-color: var(--background-body);
 	color: var(--text-main);
+	overflow-x: hidden;
 }
 
 h1,
