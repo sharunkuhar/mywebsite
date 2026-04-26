@@ -4,101 +4,218 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Publications';
 const description = 'Journal publications and patents by Sharun Kuhar.';
 const permalink = `${Astro.site?.href}publications`;
+
+const journalPapers = [
+	{
+		year: 2025,
+		title: 'In-silico study of the forces causing solid food breakdown inside the stomach',
+		authors: 'S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Journal of the Royal Society Interface',
+		details: '22.229',
+		link: 'https://doi.org/10.1098/rsif.2025.0291',
+	},
+	{
+		year: 2025,
+		title: 'Duodenogastric Reflux in Health and Disease: Insights from a Computational Fluid Dynamics Model of the Stomach',
+		authors: 'S. Kuhar, J. H. Seo, M. Camilleri, P. J. Pasricha, and R. Mittal',
+		venue: 'American Journal of Physiology-Gastrointestinal and Liver Physiology',
+		details: '328.4',
+		link: 'https://doi.org/10.1152/ajpgi.00241.2024',
+	},
+	{
+		year: 2025,
+		title: 'Modeling the Effect of Sleeve Gastrectomy on Gastric Digestion in Stomach: Insights from Multiphase Flow Modeling',
+		authors: 'W. Li, S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Journal of Biomechanical Engineering',
+		details: '147.6',
+		link: 'https://doi.org/10.1115/1.4068373',
+	},
+	{
+		year: 2025,
+		title: 'Computational Study of Gastric Emptying in Microgravity: The Role of Density and Viscosity Variations',
+		authors: 'W. Li, S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '37.7',
+		link: 'https://doi.org/10.1063/5.0278357',
+	},
+	{
+		year: 2024,
+		title: 'In silico modelling of the effect of pyloric intervention procedures on gastric flow and emptying in a stomach with gastroparesis',
+		authors: 'S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Journal of the Royal Society Interface',
+		details: '21(210)',
+		link: 'https://doi.org/10.1098/rsif.2023.0567',
+	},
+	{
+		year: 2024,
+		title: 'Computational Models of the Fluid Mechanics of the Stomach',
+		authors: 'S. Kuhar and R. Mittal',
+		venue: 'Journal of the Indian Institute of Science',
+		details: '104.1',
+		link: 'https://doi.org/10.1007/s41745-024-00421-z',
+	},
+	{
+		year: 2022,
+		title: 'Effect of stomach motility on food hydrolysis and gastric emptying: Insight from computational models',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '34(11), 111909',
+		link: 'https://doi.org/10.1063/5.0120933',
+	},
+	{
+		year: 2022,
+		title: 'Computational modeling of drug dissolution in the human stomach: Effects of posture and gastroparesis on drug bioavailability',
+		authors: 'J. H. Lee, S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '34(8), 081904',
+		link: 'https://doi.org/10.1063/5.0096877',
+	},
+	{
+		year: 2019,
+		title: 'Pressure loss and friction factor in non-Newtonian mine paste backfill: Modelling, loop test and mine field data',
+		authors: 'B. Bharathan, M. McGuinness, S. Kuhar, M. Kermani, F. P. Hassani, and A. P. Sasmito',
+		venue: 'Powder Technology',
+		details: '344',
+		link: 'https://doi.org/10.1016/j.powtec.2018.12.029',
+	},
+];
+
+const patents = [
+	{
+		year: 2023,
+		title: 'Ribbed and grooved cable having embedded strength member with water blocking coating',
+		authors: 'S. Kuhar, V. Shukla, S. Sharma, and K. Sahoo',
+		venue: 'U.S. Patent Application 17/347,080',
+		details: 'Granted',
+		link: 'https://patents.google.com/patent/US20210389542A1/en',
+	},
+	{
+		year: 2023,
+		title: 'Intermittently bonded optical fibre ribbon with unequal bond and gap lengths',
+		authors: 'H. Kondapalli, S. Sharma, S. Kuhar, A. Nath, V. Shukla, and B. Sarkaar',
+		venue: 'U.S. Patent Application 17/139,508',
+		details: 'Granted',
+		link: 'https://patents.google.com/patent/US20210271039A1/en',
+	},
+];
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="publications">
-	<div class="container">
+	<div class="pub-container">
 		<h1>Publications</h1>
 
-		<h2>Journal Papers</h2>
-		<ol reversed class="pub-list">
-			<li>
-				S. Kuhar, J. H. Seo, and R. Mittal,
-				<strong>"In-silico study of the forces causing solid food breakdown inside the stomach,"</strong>
-				<em>Journal of the Royal Society Interface</em>, 22.229, 2025.
-				<a href="https://doi.org/10.1098/rsif.2025.0291" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				S. Kuhar, J. H. Seo, M. Camilleri, P. J. Pasricha, and R. Mittal,
-				<strong>"Duodenogastric Reflux in Health and Disease: Insights from a Computational Fluid Dynamics Model of the Stomach,"</strong>
-				<em>American Journal of Physiology-Gastrointestinal and Liver Physiology</em>, 328.4, 2025.
-				<a href="https://doi.org/10.1152/ajpgi.00241.2024" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				W. Li, S. Kuhar, J. H. Seo, and R. Mittal,
-				<strong>"Modeling the Effect of Sleeve Gastrectomy on Gastric Digestion in Stomach: Insights from Multiphase Flow Modeling,"</strong>
-				<em>Journal of Biomechanical Engineering</em>, 147.6, 2025.
-				<a href="https://doi.org/10.1115/1.4068373" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				W. Li, S. Kuhar, J. H. Seo, and R. Mittal,
-				<strong>"Computational Study of Gastric Emptying in Microgravity: The Role of Density and Viscosity Variations,"</strong>
-				<em>Physics of Fluids</em>, 37.7, 2025.
-				<a href="https://doi.org/10.1063/5.0278357" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal,
-				<strong>"In silico modelling of the effect of pyloric intervention procedures on gastric flow and emptying in a stomach with gastroparesis,"</strong>
-				<em>Journal of the Royal Society Interface</em>, 21(210), 2024.
-				<a href="https://doi.org/10.1098/rsif.2023.0567" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				S. Kuhar and R. Mittal,
-				<strong>"Computational Models of the Fluid Mechanics of the Stomach,"</strong>
-				<em>Journal of the Indian Institute of Science</em>, 104.1, 2024.
-				<a href="https://doi.org/10.1007/s41745-024-00421-z" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal,
-				<strong>"Effect of stomach motility on food hydrolysis and gastric emptying: Insight from computational models,"</strong>
-				<em>Physics of Fluids</em>, 34(11), 111909, 2022.
-				<a href="https://doi.org/10.1063/5.0120933" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				J. H. Lee, S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal,
-				<strong>"Computational modeling of drug dissolution in the human stomach: Effects of posture and gastroparesis on drug bioavailability,"</strong>
-				<em>Physics of Fluids</em>, 34(8), 081904, 2022.
-				<a href="https://doi.org/10.1063/5.0096877" target="_blank" rel="noopener">[doi]</a>
-			</li>
-			<li>
-				B. Bharathan, M. McGuinness, S. Kuhar, M. Kermani, F. P. Hassani, and A. P. Sasmito,
-				<strong>"Pressure loss and friction factor in non-Newtonian mine paste backfill: Modelling, loop test and mine field data,"</strong>
-				<em>Powder Technology</em>, 344, 2019.
-				<a href="https://doi.org/10.1016/j.powtec.2018.12.029" target="_blank" rel="noopener">[doi]</a>
-			</li>
-		</ol>
+		<h2 class="pub-section-heading">Journal Papers</h2>
+		<ul class="pub-list">
+			{journalPapers.map((p) => (
+				<li class="pub-entry">
+					<span class="pub-year">{p.year}</span>
+					<div class="pub-body">
+						<a href={p.link} target="_blank" rel="noopener" class="pub-title">{p.title}</a>
+						<div class="pub-meta">
+							{p.authors}<br /><em>{p.venue}</em>{p.details ? `, ${p.details}` : ''}
+						</div>
+					</div>
+				</li>
+			))}
+		</ul>
 
-		<hr />
-
-		<h2>Patents</h2>
-		<ol reversed class="pub-list">
-			<li>
-				S. Kuhar, V. Shukla, S. Sharma, and K. Sahoo,
-				<strong>"Ribbed and grooved cable having embedded strength member with water blocking coating,"</strong>
-				U.S. Patent Application 17/347,080 (Granted: 2023).
-				<a href="https://patents.google.com/patent/US20210389542A1/en" target="_blank" rel="noopener">[link]</a>
-			</li>
-			<li>
-				H. Kondapalli, S. Sharma, S. Kuhar, A. Nath, V. Shukla, and B. Sarkaar,
-				<strong>"Intermittently bonded optical fibre ribbon with unequal bond and gap lengths,"</strong>
-				U.S. Patent Application 17/139,508 (Granted: 2023).
-				<a href="https://patents.google.com/patent/US20210271039A1/en" target="_blank" rel="noopener">[link]</a>
-			</li>
-		</ol>
+		<h2 class="pub-section-heading">Patents</h2>
+		<ul class="pub-list">
+			{patents.map((p) => (
+				<li class="pub-entry">
+					<span class="pub-year">{p.year}</span>
+					<div class="pub-body">
+						<a href={p.link} target="_blank" rel="noopener" class="pub-title">{p.title}</a>
+						<div class="pub-meta">
+							{p.authors}<br />{p.venue} ({p.details})
+						</div>
+					</div>
+				</li>
+			))}
+		</ul>
 	</div>
 </BaseLayout>
 
 <style>
+	.pub-container {
+		margin: 2em auto;
+		max-width: 48em;
+		padding: 0 1em;
+	}
+
+	.pub-section-heading {
+		font-family: var(--font-family-sans);
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin: 0 0 0.5rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+	}
+
+	.pub-section-heading + .pub-list + .pub-section-heading {
+		margin-top: 2.5rem;
+	}
+
+	.pub-list + .pub-section-heading {
+		margin-top: 2.5rem;
+	}
+
 	.pub-list {
-		padding-left: 2.5rem;
+		list-style: none;
+		padding-left: 0;
+		margin: 0;
+		font-size: 1rem;
 	}
 
-	.pub-list li {
-		margin: 1.2em 0;
-		line-height: 1.6;
+	.pub-entry {
+		display: flex;
+		align-items: baseline;
+		gap: 1rem;
+		padding: 0.7rem 0;
+		margin: 0;
+		border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+		line-height: 1.4;
 	}
 
-	.pub-list li a {
-		white-space: nowrap;
+	.pub-entry:last-child {
+		border-bottom: none;
+	}
+
+	.pub-year {
+		flex-shrink: 0;
+		min-width: 3rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		font-variant-numeric: tabular-nums;
+		opacity: 0.7;
+	}
+
+	.pub-body {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.pub-title {
+		display: block;
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-main);
+		text-decoration: none;
+		line-height: 1.4;
+	}
+
+	.pub-title:hover {
+		color: var(--primary-color);
+		text-decoration: underline;
+	}
+
+	.pub-meta {
+		font-size: 0.82rem;
+		color: var(--text-secondary);
+		margin-top: 0.2rem;
+		line-height: 1.45;
 	}
 </style>
