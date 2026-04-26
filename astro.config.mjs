@@ -9,8 +9,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://sharunkuhar.github.io',
-	base: '/mywebsite',
+	site: 'https://sharunkuhar.com',
 	trailingSlash: 'always',
 	server: { host: true },
 	integrations: [mdx(), sitemap()],
