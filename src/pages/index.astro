@@ -1,0 +1,376 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Sharun Kuhar';
+const description =
+	'I build high-fidelity, imaging- and physics-based models of physiological flows, ranging from digestion inside the stomach to subcutaneous injections.';
+const permalink = Astro.site?.href;
+const base = import.meta.env.BASE_URL;
+
+const pillars = [
+	{
+		key: 'stomach',
+		name: 'Digital Twin of the Stomach',
+		blurb:
+			'An imaging data-based, anatomically realistic model of the stomach that captures the fluid mechanics of its contents alongside its physiological functions — used to study digestion, motility disorders, surgery, and reflux.',
+	},
+	{
+		key: 'injectables',
+		name: 'Injectable Medicines',
+		blurb:
+			'A mechanistic model of the subcutaneous administration of peptides, coupling a high-fidelity tissue-level poroelastic model with a systemic compartmental model to predict how an injected drug reaches the bloodstream.',
+	},
+];
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="" bleed={true}>
+	<section class="hero">
+		<svg class="streamfield" preserveAspectRatio="none" viewBox="0 0 1200 620" aria-hidden="true">
+			<defs>
+				<linearGradient id="fieldgrad" x1="0" y1="0" x2="1" y2="0">
+					<stop offset="0" stop-color="var(--flow)" stop-opacity="0"></stop>
+					<stop offset="0.5" stop-color="var(--flow)" stop-opacity="0.22"></stop>
+					<stop offset="1" stop-color="var(--ember)" stop-opacity="0.20"></stop>
+				</linearGradient>
+			</defs>
+			<g stroke="url(#fieldgrad)" fill="none" stroke-width="1.4">
+				<path d="M-40 120 C 300 60, 520 200, 840 150 S 1300 120, 1260 180"></path>
+				<path d="M-40 190 C 320 140, 540 270, 860 220 S 1300 190, 1260 250"></path>
+				<path d="M-40 260 C 300 220, 560 340, 880 300 S 1320 270, 1260 320"></path>
+				<path d="M-40 330 C 320 300, 540 410, 860 380 S 1300 350, 1260 400"></path>
+				<path d="M-40 400 C 300 380, 560 470, 880 460 S 1320 440, 1260 470"></path>
+				<path d="M-40 470 C 320 460, 540 540, 860 540 S 1300 520, 1260 540"></path>
+			</g>
+		</svg>
+
+		<div class="wrap hero-grid">
+			<div class="hero-copy">
+				<div class="eyebrow">
+					<span class="rule"></span>
+					<span class="kicker">Computational physics of the human body</span>
+				</div>
+				<h1 class="name">Sharun Kuhar</h1>
+				<p class="lede">
+					I build high-fidelity, imaging- and physics-based models of physiological flows,
+					ranging from digestion inside the stomach to subcutaneous injections.
+				</p>
+				<p class="sub">
+					Postdoctoral researcher at Purdue. Ph.D., Johns Hopkins. B.Tech, IIT Kanpur. Quad Fellow.
+				</p>
+				<div class="actions">
+					<a class="btn primary" href={`${base}work/`}>Explore the work &rarr;</a>
+					<a class="btn ghost" href={`${base}publications/`}>Read the papers</a>
+				</div>
+			</div>
+
+			<figure class="figure">
+				<div class="frame">
+					<video
+						class="sim"
+						autoplay
+						muted
+						loop
+						playsinline
+						poster={`${base}assets/home-flow-poster.webp`}
+					>
+						<source src={`${base}assets/home-flow.mp4`} type="video/mp4" />
+						<img src={`${base}assets/home-flow-poster.webp`} alt="CFD simulation of gastric flow" />
+					</video>
+				</div>
+				<figcaption>
+					<span><span class="k">Fig.01</span> — gastric flow field</span>
+					<span class="num">CFD · velocity</span>
+				</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="pillars">
+		<div class="wrap">
+			<span class="label">The work</span>
+			<h2 class="section-title">From digestion to drug delivery.</h2>
+			<div class="pillar-grid">
+				{
+					pillars.map((p) => (
+						<a class="pillar" href={`${base}work/#${p.key}`}>
+							<h3>{p.name}</h3>
+							<p>{p.blurb}</p>
+							<span class="more">See the work &rarr;</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.wrap {
+		max-width: var(--maxw);
+		margin: 0 auto;
+		padding: 0 var(--sp-6);
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	/* ---------- hero ---------- */
+	.hero {
+		position: relative;
+		overflow: hidden;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.streamfield {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		opacity: 0.9;
+	}
+
+	.hero-grid {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: 1.15fr 0.85fr;
+		gap: var(--sp-8);
+		align-items: center;
+		padding-top: var(--sp-9);
+		padding-bottom: var(--sp-9);
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		margin-bottom: var(--sp-5);
+	}
+
+	.rule {
+		height: 1px;
+		width: 42px;
+		background: var(--flow);
+		opacity: 0.6;
+	}
+
+	.kicker {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-weight: 400;
+		font-size: 1.15rem;
+		color: var(--flow);
+	}
+
+	.name {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-display);
+		line-height: 0.98;
+		letter-spacing: -0.02em;
+		margin: 0 0 var(--sp-4);
+		font-optical-sizing: auto;
+	}
+
+	.lede {
+		font-size: var(--fs-md);
+		line-height: 1.6;
+		max-width: 35ch;
+		margin: 0 0 var(--sp-4);
+	}
+
+	.sub {
+		color: var(--muted);
+		max-width: 44ch;
+		margin: 0 0 var(--sp-6);
+	}
+
+	.actions {
+		display: flex;
+		gap: var(--sp-3);
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		font-family: var(--font-text);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 12px 20px;
+		border-radius: 9px;
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		transition: all 0.18s ease;
+	}
+
+	.btn.primary {
+		background: var(--flow);
+		color: #fff;
+	}
+
+	.btn.primary:hover {
+		filter: brightness(1.08);
+	}
+
+	.btn.ghost {
+		border: 1px solid var(--line);
+		color: var(--ink);
+	}
+
+	.btn.ghost:hover {
+		border-color: var(--flow);
+		color: var(--flow);
+	}
+
+	/* figure card */
+	.figure {
+		position: relative;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: 14px;
+		margin: 0;
+		box-shadow: 0 24px 60px -32px rgba(15, 33, 41, 0.4);
+	}
+
+	.frame {
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		aspect-ratio: 1 / 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: radial-gradient(
+			120% 120% at 50% 0%,
+			color-mix(in srgb, var(--flow) 8%, var(--surface)),
+			var(--surface)
+		);
+	}
+
+	.frame img {
+		width: 82%;
+		height: auto;
+		display: block;
+		mix-blend-mode: multiply;
+	}
+
+	.frame .sim {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+		mix-blend-mode: multiply;
+	}
+
+	:global(.theme-dark) .frame img,
+	:global(.theme-dark) .frame .sim {
+		mix-blend-mode: normal;
+	}
+
+	figcaption {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 12px;
+		font-size: 0.68rem;
+		font-weight: 600;
+		letter-spacing: var(--track);
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	figcaption .k {
+		color: var(--flow);
+	}
+
+	.num {
+		font-variant-numeric: tabular-nums;
+	}
+
+	/* ---------- pillars ---------- */
+	.pillars {
+		padding: var(--sp-9) 0;
+	}
+
+	.label {
+		font-family: var(--font-text);
+		font-size: var(--fs-label);
+		font-weight: 600;
+		letter-spacing: var(--track);
+		text-transform: uppercase;
+		color: var(--muted);
+		display: block;
+	}
+
+	.section-title {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-xl);
+		letter-spacing: -0.01em;
+		margin: 10px 0 var(--sp-7);
+	}
+
+	.pillar-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--sp-6);
+	}
+
+	.pillar {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: var(--sp-6);
+		transition:
+			border-color 0.18s ease,
+			transform 0.18s ease;
+	}
+
+	.pillar:hover {
+		border-color: var(--flow);
+		transform: translateY(-2px);
+	}
+
+	.pillar h3 {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--fs-lg);
+		margin: 0 0 var(--sp-3);
+		line-height: 1.15;
+	}
+
+	.pillar p {
+		margin: 0 0 var(--sp-4);
+		color: var(--muted);
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.more {
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: var(--track);
+		text-transform: uppercase;
+		color: var(--flow);
+	}
+
+	@media (max-width: 860px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+			gap: var(--sp-7);
+		}
+		.figure {
+			max-width: 360px;
+		}
+		.pillar-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

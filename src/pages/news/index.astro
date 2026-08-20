@@ -1,0 +1,172 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'News';
+const description = 'Latest news and updates.';
+const permalink = `${Astro.site?.href}news`;
+const base = import.meta.env.BASE_URL;
+
+let allPosts = await getCollection('news');
+allPosts = allPosts.sort(
+	(a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+);
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="news">
+	<div class="news-container">
+		<h1>News</h1>
+		<div class="grid">
+			{
+				allPosts.map((post) => {
+					const href = `${base}news/${post.id}/`;
+					const date = new Date(post.data.pubDate).toLocaleDateString('en-us', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					});
+					return (
+						<a href={href} class="card">
+							<div class="thumb">
+								{post.data.coverImage ? (
+									<img src={post.data.coverImage} alt={post.data.title} loading="lazy" />
+								) : (
+									<div class="placeholder">
+										<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="32" cy="22" r="10" stroke="currentColor" stroke-width="2" />
+											<path d="M10 54c0-12.15 9.85-22 22-22s22 9.85 22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+										</svg>
+									</div>
+								)}
+							</div>
+							<div class="info">
+								<span class="date">{date}</span>
+								<h2>{post.data.title}</h2>
+							</div>
+						</a>
+					);
+				})
+			}
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.news-container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 1.5rem 4rem;
+	}
+
+	h1 {
+		font-family: var(--font-family-sans);
+		font-size: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.75rem;
+	}
+
+	@media (max-width: 600px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.card {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--card-bg, transparent);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+	}
+
+	:root.theme-dark .card:hover {
+		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+	}
+
+	.thumb {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background: var(--placeholder-bg);
+		border-radius: 8px;
+	}
+
+	:root {
+		--placeholder-bg: #e8eef0;
+	}
+
+	:root.theme-dark {
+		--placeholder-bg: #2a3038;
+	}
+
+	.thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.35s ease;
+	}
+
+	.card:hover .thumb img {
+		transform: scale(1.04);
+	}
+
+	.placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--text-secondary);
+		opacity: 0.35;
+	}
+
+	.placeholder svg {
+		width: 52px;
+		height: 52px;
+	}
+
+	.info {
+		padding: 0.85rem 0.25rem 0.5rem;
+	}
+
+	.date {
+		display: block;
+		font-family: var(--font-family-sans);
+		font-size: 0.7rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--text-secondary);
+		margin-bottom: 0.4rem;
+	}
+
+	h2 {
+		font-family: var(--font-family-sans);
+		font-size: 0.95rem;
+		font-weight: 700;
+		line-height: 1.4;
+		margin: 0;
+		color: var(--text-main);
+	}
+
+	.card:hover h2 {
+		color: var(--primary-color);
+	}
+</style>

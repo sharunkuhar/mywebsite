@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Publications';
+const description = 'Journal papers, preprints, conference presentations, and patents by Sharun Kuhar.';
+const permalink = `${Astro.site?.href}publications`;
+
+const preprints = [
+	{
+		year: 2026,
+		title: 'Flow-Mediated Regulation of Pathogen Survival in the Human Stomach',
+		authors: 'S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'arXiv preprint',
+		details: 'arXiv:2606.10895',
+		link: 'https://doi.org/10.48550/arXiv.2606.10895',
+	},
+	{
+		year: 2026,
+		title: 'Multiscale modeling of the subcutaneous administration of peptides',
+		authors: 'S. Kuhar, C. Li, and A. M. Ardekani',
+		venue: 'bioRxiv preprint',
+		details: '',
+		link: 'https://doi.org/10.64898/2026.06.01.724102',
+	},
+];
+
+const journalPapers = [
+	{
+		year: 2025,
+		title: 'In-silico study of the forces causing solid food breakdown inside the stomach',
+		authors: 'S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Journal of the Royal Society Interface',
+		details: '22.229',
+		link: 'https://doi.org/10.1098/rsif.2025.0291',
+	},
+	{
+		year: 2025,
+		title: 'Duodenogastric Reflux in Health and Disease: Insights from a Computational Fluid Dynamics Model of the Stomach',
+		authors: 'S. Kuhar, J. H. Seo, M. Camilleri, P. J. Pasricha, and R. Mittal',
+		venue: 'American Journal of Physiology-Gastrointestinal and Liver Physiology',
+		details: '328.4',
+		link: 'https://doi.org/10.1152/ajpgi.00241.2024',
+	},
+	{
+		year: 2025,
+		title: 'Modeling the Effect of Sleeve Gastrectomy on Gastric Digestion in Stomach: Insights from Multiphase Flow Modeling',
+		authors: 'W. Li, S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Journal of Biomechanical Engineering',
+		details: '147.6',
+		link: 'https://doi.org/10.1115/1.4068373',
+	},
+	{
+		year: 2025,
+		title: 'Computational Study of Gastric Emptying in Microgravity: The Role of Density and Viscosity Variations',
+		authors: 'W. Li, S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '37.7',
+		link: 'https://doi.org/10.1063/5.0278357',
+	},
+	{
+		year: 2024,
+		title: 'In silico modelling of the effect of pyloric intervention procedures on gastric flow and emptying in a stomach with gastroparesis',
+		authors: 'S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Journal of the Royal Society Interface',
+		details: '21(210)',
+		link: 'https://doi.org/10.1098/rsif.2023.0567',
+	},
+	{
+		year: 2024,
+		title: 'Computational Models of the Fluid Mechanics of the Stomach',
+		authors: 'S. Kuhar and R. Mittal',
+		venue: 'Journal of the Indian Institute of Science',
+		details: '104.1 (Invited Review)',
+		link: 'https://doi.org/10.1007/s41745-024-00421-z',
+	},
+	{
+		year: 2022,
+		title: 'Effect of stomach motility on food hydrolysis and gastric emptying: Insight from computational models',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '34(11), 111909',
+		link: 'https://doi.org/10.1063/5.0120933',
+	},
+	{
+		year: 2022,
+		title: 'Computational modeling of drug dissolution in the human stomach: Effects of posture and gastroparesis on drug bioavailability',
+		authors: 'J. H. Lee, S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Physics of Fluids',
+		details: '34(8), 081904',
+		link: 'https://doi.org/10.1063/5.0096877',
+	},
+	{
+		year: 2019,
+		title: 'Pressure loss and friction factor in non-Newtonian mine paste backfill: Modelling, loop test and mine field data',
+		authors: 'B. Bharathan, M. McGuinness, S. Kuhar, M. Kermani, F. P. Hassani, and A. P. Sasmito',
+		venue: 'Powder Technology',
+		details: '344',
+		link: 'https://doi.org/10.1016/j.powtec.2018.12.029',
+	},
+];
+
+const conferences = [
+	{
+		year: 2025,
+		title: 'Digital Twin of the Stomach: Applications to Digestive Disorders and Surgery Planning',
+		authors: 'S. Kuhar, J. H. Seo, P. Pasricha, and R. Mittal',
+		venue: 'American Physiology Summit',
+		link: 'https://journals.physiology.org/doi/abs/10.1152/physiol.2025.40.S1.0672',
+	},
+	{
+		year: 2024,
+		title: 'Towards a Digital Twin of the Stomach with application to Digestion and Gastric Reflux',
+		authors: 'S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD24/Session/L04.5',
+	},
+	{
+		year: 2024,
+		title: 'Food Digestion in the Stomach after Bariatric Surgery: Insights from Multiphase Flow Modeling',
+		authors: 'W. Li, S. Kuhar, J. H. Seo, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD24/Session/L04.7',
+	},
+	{
+		year: 2023,
+		title: 'Computational Fluid Dynamics of Digestion Inside the Stomach',
+		authors: 'S. Kuhar and R. Mittal',
+		venue: '10th International and 50th National Conference on Fluid Mechanics and Fluid Power (FMFP)',
+		link: null,
+	},
+	{
+		year: 2023,
+		title: 'StomachSim: An in-silico model of stomach biomechanics based on patient-specific imaging data',
+		authors: 'S. Kuhar, A. Menys, J. H. Seo, and R. Mittal',
+		venue: 'NeuroGASTRO 2023',
+		link: 'https://www.neurogastro2023.org/scientific-programme.html',
+	},
+	{
+		year: 2023,
+		title: 'Computational modeling of solid food digestion inside the stomach',
+		authors: 'S. Kuhar, A. Menys, J. H. Seo, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD23/Session/L10.8',
+	},
+	{
+		year: 2023,
+		title: 'Computational modeling of digestion and drug-dissolution inside the stomach',
+		authors: 'S. Kuhar and R. Mittal',
+		venue: 'ReCoVor',
+		link: 'https://sites.google.com/g.ucla.edu/recovor/schedule#h.2h11uaswlb2g',
+	},
+	{
+		year: 2023,
+		title: 'StomachSim: An in-silico simulator of gastric biomechanics with application to pyloroplasty',
+		authors: 'S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'Digestive Disease Week',
+		link: 'https://doi.org/10.1016/S0016-5085(23)02492-7',
+	},
+	{
+		year: 2023,
+		title: 'StomachSim: An in-silico simulator of gastric biomechanics with application to pyloroplasty',
+		authors: 'S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'American Physiology Summit',
+		link: 'https://doi.org/10.1152/physiol.2023.38.S1.5729950',
+	},
+	{
+		year: 2023,
+		title: 'StomachSim: an in-silico simulator of gastric biomechanics',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'JHU Department of Medicine & Whiting School of Engineering Research Retreat',
+		link: null,
+	},
+	{
+		year: 2022,
+		title: 'Biofluid dynamics of digestion in the stomach: Insights from computational modeling',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD22/Session/Z07.4',
+	},
+	{
+		year: 2022,
+		title: 'The Chemo-Fluid Dynamics of Digestion in the Stomach: Insights from Computational Modeling',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'CEAFM Burgers Symposium',
+		link: 'https://engineering.jhu.edu/ceafm/wp-content/uploads/2022/07/CEAFM-Burgers-Symposium2022.pdf',
+	},
+	{
+		year: 2022,
+		title: 'Biofluid dynamics of digestion in the stomach: Insights from computational modeling',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'JHU Department of Medicine & Whiting School of Engineering Research Retreat',
+		link: null,
+	},
+	{
+		year: 2021,
+		title: 'The Chemo-Fluid Dynamics of Digestion in the Stomach: Insights from Computational Modeling',
+		authors: 'S. Kuhar, J. H. Lee, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD21/Session/T15.6',
+	},
+	{
+		year: 2021,
+		title: 'The Fluid Dynamics of the Dissolution of an Oral Drug in the Human Stomach',
+		authors: 'J. H. Lee, S. Kuhar, J. H. Seo, P. J. Pasricha, and R. Mittal',
+		venue: 'APS Division of Fluid Dynamics',
+		link: 'https://meetings.aps.org/Meeting/DFD21/Session/T15.7',
+	},
+	{
+		year: 2019,
+		title: 'Linear Stability Analysis of Two-Dimensional Flow Past a Square Cylinder at Different Blockage Ratios',
+		authors: 'S. Kuhar and Arun K. Saha',
+		venue: 'Research Scholar Day, Association of Mechanical Engineers, IIT Kanpur',
+		link: 'https://www.iitk.ac.in/ame/pic/rsd/RSD-Schedule.pdf',
+	},
+];
+
+const patents = [
+	{
+		year: 2023,
+		title: 'Ribbed and grooved cable having embedded strength member with water blocking coating',
+		authors: 'S. Kuhar, V. Shukla, S. Sharma, and K. Sahoo',
+		venue: 'U.S. Patent Application 17/347,080',
+		details: 'Granted',
+		link: 'https://patents.google.com/patent/US20210389542A1/en',
+	},
+	{
+		year: 2023,
+		title: 'Intermittently bonded optical fibre ribbon with unequal bond and gap lengths',
+		authors: 'H. Kondapalli, S. Sharma, S. Kuhar, A. Nath, V. Shukla, and B. Sarkaar',
+		venue: 'U.S. Patent Application 17/139,508',
+		details: 'Granted',
+		link: 'https://patents.google.com/patent/US20210271039A1/en',
+	},
+];
+
+const sections = [
+	{ id: 'preprints', label: 'Preprints', items: preprints, kind: 'paper' },
+	{ id: 'journal', label: 'Journal Papers', items: journalPapers, kind: 'paper' },
+	{ id: 'conferences', label: 'Conference Presentations', items: conferences, kind: 'conf' },
+	{ id: 'patents', label: 'Patents', items: patents, kind: 'patent' },
+];
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="publications">
+	<div class="pub-container">
+		<h1>Publications</h1>
+
+		<nav class="jump">
+			{sections.map((s) => <a href={`#${s.id}`}>{s.label}</a>)}
+		</nav>
+
+		{
+			sections.map((s) => (
+				<section id={s.id} class="pub-section">
+					<h2 class="pub-section-heading">{s.label}</h2>
+					<ul class="pub-list">
+						{s.items.map((p) => (
+							<li class="pub-entry">
+								<span class="pub-year">{p.year}</span>
+								<div class="pub-body">
+									{p.link ? (
+										<a href={p.link} target="_blank" rel="noopener" class="pub-title">
+											{p.title}
+										</a>
+									) : (
+										<span class="pub-title">{p.title}</span>
+									)}
+									<div class="pub-meta">
+										{p.authors}
+										<br />
+										{s.kind === 'patent' ? (
+											<span>
+												{p.venue} ({p.details})
+											</span>
+										) : (
+											<span>
+												<em>{p.venue}</em>
+												{p.details ? `, ${p.details}` : ''}
+											</span>
+										)}
+									</div>
+								</div>
+							</li>
+						))}
+					</ul>
+				</section>
+			))
+		}
+	</div>
+</BaseLayout>
+
+<style>
+	.pub-container {
+		margin: 2em auto;
+		max-width: 48em;
+		padding: 0 1em;
+	}
+
+	.jump {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--sp-3);
+		margin: 0 0 var(--sp-8);
+	}
+
+	.jump a {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: var(--track);
+		text-transform: uppercase;
+		color: var(--flow);
+		text-decoration: none;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		padding: 6px 14px;
+		transition: all 0.18s ease;
+	}
+
+	.jump a:hover {
+		border-color: var(--flow);
+		background: color-mix(in srgb, var(--flow) 8%, transparent);
+	}
+
+	.pub-section {
+		scroll-margin-top: 80px;
+	}
+
+	.pub-section + .pub-section {
+		margin-top: 2.75rem;
+	}
+
+	.pub-section-heading {
+		font-family: var(--font-text);
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--muted);
+		text-transform: uppercase;
+		letter-spacing: var(--track);
+		margin: 0 0 0.5rem;
+		padding-bottom: 0.4rem;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.pub-list {
+		list-style: none;
+		padding-left: 0;
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	.pub-entry {
+		display: flex;
+		align-items: baseline;
+		gap: 1rem;
+		padding: 0.7rem 0;
+		margin: 0;
+		border-bottom: 1px solid var(--line);
+		line-height: 1.4;
+	}
+
+	.pub-entry:last-child {
+		border-bottom: none;
+	}
+
+	.pub-year {
+		flex-shrink: 0;
+		min-width: 3rem;
+		font-size: 0.85rem;
+		color: var(--muted);
+		font-variant-numeric: tabular-nums;
+	}
+
+	.pub-body {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.pub-title {
+		display: block;
+		font-family: var(--font-text);
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--ink);
+		text-decoration: none;
+		line-height: 1.4;
+	}
+
+	a.pub-title:hover {
+		color: var(--flow);
+	}
+
+	.pub-meta {
+		font-size: 0.82rem;
+		color: var(--muted);
+		margin-top: 0.2rem;
+		line-height: 1.45;
+	}
+</style>

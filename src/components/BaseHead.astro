@@ -1,0 +1,77 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/fonts.css';
+import '../styles/global.css';
+
+export interface Props {
+	title: string;
+	description: string;
+	permalink?: string;
+}
+
+const { title, description, permalink } = Astro.props;
+const canonicalURL = permalink || new URL(Astro.url.pathname, Astro.site).href;
+const socialUrl = new URL(`${import.meta.env.BASE_URL}assets/portrait.jpg`, Astro.site).href;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/webp" href={`${import.meta.env.BASE_URL}favicon.webp`} />
+<link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialUrl} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialUrl} />
+
+<ClientRouter />
+
+<!--
+	View transitions swap in video elements that were parsed in an inert
+	document, so the browser never honours their autoplay attribute — they
+	land paused on the poster frame. Kick them off after every navigation.
+-->
+<script is:inline>
+	document.addEventListener('astro:page-load', () => {
+		for (const video of document.querySelectorAll('video[autoplay]')) {
+			video.muted = true;
+			// readyState 0 means resource selection never ran for this element.
+			if (video.readyState === 0) video.load();
+			const played = video.play();
+			if (played) played.catch(() => {});
+		}
+	});
+</script>
+
+<!-- This is intentionally inlined to avoid FOUC -->
+<script is:inline>
+	const root = document.documentElement;
+	const theme = localStorage.getItem('theme');
+	if (
+		theme === 'dark' ||
+		(!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+	) {
+		root.classList.add('theme-dark');
+	} else {
+		root.classList.remove('theme-dark');
+	}
+</script>

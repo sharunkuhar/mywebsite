@@ -1,0 +1,65 @@
+/* ============================================================
+   DESIGN TOKENS — single source of truth for the whole site.
+   Change a value here and it propagates everywhere. Nothing in
+   the codebase should hardcode a colour, font, or size that has
+   a token below.
+
+   To re-face the entire site, edit --font-display / --font-text.
+   To re-colour it, edit the colour block. That's the whole job.
+   ============================================================ */
+
+:root {
+	/* ---- Typography: two families, swap either to reface ---- */
+	--font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+	--font-text: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+
+	/* ---- Colour: a diverging scientific field (cool ↔ warm) ---- */
+	--bg: #f4f7f8; /* cool paper                */
+	--surface: #ffffff; /* cards / raised areas      */
+	--ink: #0f2129; /* primary text (near-black) */
+	--muted: #566a71; /* secondary text            */
+	--line: #dce5e7; /* hairline borders          */
+	--flow: #2f7c8a; /* primary accent (cool end) */
+	--flow-soft: #8fc0c9; /* secondary accent          */
+	--ember: #c0491b; /* counter-accent (warm end) */
+
+	/* ---- Type scale: fluid, ~major third (1.25) ---- */
+	--fs-label: 0.74rem;
+	--fs-sm: 0.9rem;
+	--fs-base: 1.0625rem;
+	--fs-md: 1.2rem;
+	--fs-lg: 1.55rem;
+	--fs-xl: 2.1rem;
+	--fs-2xl: clamp(2.4rem, 5vw, 3.2rem);
+	--fs-display: clamp(3rem, 7.5vw, 5.4rem);
+
+	/* ---- Spacing: 4px base ---- */
+	--sp-1: 4px;
+	--sp-2: 8px;
+	--sp-3: 12px;
+	--sp-4: 16px;
+	--sp-5: 24px;
+	--sp-6: 32px;
+	--sp-7: 48px;
+	--sp-8: 64px;
+	--sp-9: 96px;
+	--sp-10: 128px;
+
+	/* ---- Misc ---- */
+	--radius: 14px;
+	--radius-sm: 8px;
+	--maxw: 1120px;
+	--track: 0.14em; /* label letter-spacing */
+	--line-body: 1.65;
+}
+
+:root.theme-dark {
+	--bg: #0b1417; /* dark solver viewport */
+	--surface: #132025;
+	--ink: #ebf1f1;
+	--muted: #93a7ad;
+	--line: #213035;
+	--flow: #5faebc;
+	--flow-soft: #2c4c53;
+	--ember: #e4713e;
+}
