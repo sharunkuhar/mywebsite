@@ -1,284 +1,183 @@
-/* New design-system tokens (single source of truth). The legacy
-   variables below remain until pages are migrated onto the tokens. */
-@import './tokens.css';
+/* The whole site's styling. Deliberately plain: one serif face (the
+   system Charter where available), black on white, underlined links. */
 
-/* Legacy variable names now alias the design tokens, so pages that
-   still reference them inherit the new system automatically. */
 :root {
-	--background-body: var(--bg);
-	--text-main: var(--ink);
-	--text-secondary: var(--muted);
-	--primary-color: var(--flow);
-	--font-family-serif: var(--font-display);
-	--font-family-sans: var(--font-text);
+	color-scheme: light dark;
+	--bg: #fff;
+	--ink: #111;
+	--muted: #555;
+	--rule: #ddd;
 }
 
-:root.theme-dark {
-	--background-body: var(--bg);
-	--text-main: var(--ink);
-	--text-secondary: var(--muted);
-	--primary-color: var(--flow);
-}
-
-html {
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-
-@supports (scrollbar-gutter: stable) {
-	html {
-		overflow-y: auto;
-		scrollbar-gutter: stable;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #151515;
+		--ink: #e6e6e6;
+		--muted: #9a9a9a;
+		--rule: #333;
 	}
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
+html {
+	background: var(--bg);
+	color: var(--ink);
+	scrollbar-gutter: stable;
+}
+
 body {
-	margin: 0;
-	font-family: var(--font-text);
-	font-size: 16px;
-	line-height: var(--line-body);
-	background-color: var(--bg);
-	color: var(--ink);
-	overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: var(--font-display);
-	font-weight: 600;
-	line-height: 1.15;
-	letter-spacing: -0.01em;
-	color: var(--ink);
-	margin: 0 0 0.5em 0;
-}
-
-h1 {
-	font-size: var(--fs-2xl);
-	margin: 0 0 0.6em 0;
-}
-
-h2 {
-	margin: 1.4em 0 0.4em 0;
-	font-size: var(--fs-xl);
-}
-
-h3 {
-	font-size: var(--fs-lg);
-}
-
-h4 {
-	font-size: var(--fs-md);
-}
-
-h5 {
-	font-size: 1.1rem;
-}
-
-h6 {
-	font-size: 1rem;
-}
-
-p,
-ul,
-ol {
-	font-size: 1.1rem;
-	line-height: 1.75em;
-	margin: 1.2em 0;
-}
-
-ol,
-ul {
-	padding-left: 2rem;
-	-webkit-padding-start: 5%;
-	-webkit-padding-end: 5%;
-}
-
-li {
-	margin: 1rem 0;
-}
-
-li p {
-	margin-bottom: 0.5rem;
-	margin-top: 0.5rem;
+	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+	font-size: 17px;
+	line-height: 1.55;
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 32px 20px 64px;
 }
 
 a {
 	color: inherit;
-	transition: color linear 0.15s;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
 }
 
 a:hover {
-	color: var(--primary-color);
+	text-decoration-thickness: 2px;
 }
 
-p a {
-	text-decoration: none;
-	box-shadow: inset 0 -0.12em 0 var(--primary-color);
-	-webkit-transition:
-		box-shadow 0.2s ease-in-out,
-		color 0.2s ease-in-out;
-	transition:
-		box-shadow 0.2s ease-in-out,
-		color 0.2s ease-in-out;
+h1,
+h2,
+h3 {
+	font-weight: bold;
+	line-height: 1.25;
+	margin: 0;
 }
 
-p a:hover {
-	box-shadow: inset 0 -1.5em 0 var(--primary-color);
-	color: #fff;
+h1 {
+	font-size: 28px;
+	margin-bottom: 16px;
 }
 
-img {
+h2 {
+	font-size: 21px;
+	margin: 48px 0 12px;
+}
+
+h3 {
+	font-size: 17px;
+	margin: 28px 0 4px;
+}
+
+p {
+	margin: 0 0 14px;
+}
+
+ul,
+ol {
+	margin: 0 0 14px;
+	padding-left: 20px;
+}
+
+li {
+	margin-bottom: 6px;
+}
+
+img,
+video {
 	max-width: 100%;
 	height: auto;
 }
 
+/* Figures (and images in news posts) sit centred at 75% of the column. */
+figure {
+	width: 75%;
+	margin: 24px auto;
+}
+
+figure img,
+figure video {
+	display: block;
+	width: 100%;
+}
+
+article p > img {
+	display: block;
+	width: 75%;
+	margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+	figure,
+	article p > img {
+		width: 100%;
+	}
+}
+
+figcaption {
+	color: var(--muted);
+	font-size: 15px;
+	margin-top: 6px;
+}
+
 hr {
-	padding: 0;
 	border: 0;
-	height: 1px;
-	margin: var(--sp-7) auto;
-	background: var(--line);
-}
-
-code {
-	font-family: 'SF Mono', menlo, inconsolata, monospace;
-	font-size: calc(1em - 2px);
-	color: #555;
-	padding: 0.2em 0.4em;
-	border-radius: 2px;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-pre {
-	border-radius: 8px !important;
-	margin: 1.2em 0 !important;
-	padding: 1.2em;
-}
-
-pre code {
-	padding: 0;
+	border-top: 1px solid var(--rule);
+	margin: 32px 0;
 }
 
 blockquote {
-	border-left: 3px solid var(--flow);
-	font-family: var(--font-display);
-	font-size: 1.3rem;
-	font-style: italic;
-	color: var(--ink);
-	margin: 2rem 0;
-	padding-left: 2rem;
-	padding-right: 2rem;
+	margin: 0 0 14px;
+	padding-left: 16px;
+	border-left: 2px solid var(--rule);
+	color: var(--muted);
 }
 
-blockquote p {
-	padding-bottom: 6px;
+code {
+	font-size: 0.9em;
 }
 
-blockquote footer {
-	font-size: 1.1rem;
-	text-align: right;
-}
-
-figure {
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	-webkit-margin-start: 0;
-	-webkit-margin-end: 0;
-	margin: 0 0 3em 0;
+pre {
+	padding: 12px;
+	overflow-x: auto;
+	font-size: 14px;
 }
 
 table {
 	border-collapse: collapse;
-	font-family: var(--font-family-sans);
-	font-size: 1.125em;
-	margin: 2em 0;
+	margin-bottom: 14px;
 }
 
-th {
-	border-bottom: 2px solid var(--line);
-	padding: 0.4em 0.8em;
-	word-break: break-word;
-}
-
+th,
 td {
-	padding: 0.4em 0.8em;
-	word-break: break-word;
+	padding: 4px 12px 4px 0;
+	text-align: left;
+	vertical-align: top;
 }
 
-.container {
-	margin: 0 auto;
-	max-width: 42em;
-	width: 100%;
+.muted {
+	color: var(--muted);
 }
 
-.content h1 {
-	font-size: var(--fs-2xl);
-	margin: 0.6em 0;
+/* A plain list of "date — item" lines (news). */
+.dated {
+	list-style: none;
+	padding: 0;
 }
 
-.theme-toggle {
-	display: inline-flex;
-	align-items: center;
-	height: 100%;
-	padding: 0.33em 0.67em;
-	padding-top: 8px;
-	margin-left: 10px;
-	gap: 0.6em;
-	border-radius: 99em;
-	background-color: var(--background-body);
-}
-
-.theme-toggle > label:focus-within {
-	outline: 2px solid transparent;
-	box-shadow:
-		0 0 0 0.08em var(--primary-color),
-		0 0 0 0.12em white;
-}
-
-.theme-toggle > label {
-	color: var(--text-secondary);
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0.5;
-	cursor: pointer;
-}
-
-.theme-toggle .checked {
-	color: var(--primary-color);
-	opacity: 1;
-}
-
-input[name='theme-toggle'] {
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: -1;
+.dated .date {
+	display: inline-block;
+	width: 84px;
+	color: var(--muted);
 }
 
 @media (max-width: 480px) {
-	p,
-	ul,
-	ol {
-		font-size: 1.02rem;
-		margin: 1em 0;
+	.dated .date {
+		display: block;
+		width: auto;
 	}
 }

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Publications';
 const description = 'Journal papers, preprints, conference presentations, and patents by Sharun Kuhar.';
-const permalink = `${Astro.site?.href}publications`;
+const permalink = `${Astro.site?.href}publications/`;
 
 const preprints = [
 	{
@@ -239,160 +239,46 @@ const sections = [
 	{ id: 'conferences', label: 'Conference Presentations', items: conferences, kind: 'conf' },
 	{ id: 'patents', label: 'Patents', items: patents, kind: 'patent' },
 ];
+
+// Bold the site owner's name in each author list.
+const authorsHtml = (a: string) => a.replace('S. Kuhar', '<b>S. Kuhar</b>');
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="publications">
-	<div class="pub-container">
-		<h1>Publications</h1>
-
-		<nav class="jump">
-			{sections.map((s) => <a href={`#${s.id}`}>{s.label}</a>)}
-		</nav>
-
+	<h1>Publications</h1>
+	<p>
 		{
-			sections.map((s) => (
-				<section id={s.id} class="pub-section">
-					<h2 class="pub-section-heading">{s.label}</h2>
-					<ul class="pub-list">
-						{s.items.map((p) => (
-							<li class="pub-entry">
-								<span class="pub-year">{p.year}</span>
-								<div class="pub-body">
-									{p.link ? (
-										<a href={p.link} target="_blank" rel="noopener" class="pub-title">
-											{p.title}
-										</a>
-									) : (
-										<span class="pub-title">{p.title}</span>
-									)}
-									<div class="pub-meta">
-										{p.authors}
-										<br />
-										{s.kind === 'patent' ? (
-											<span>
-												{p.venue} ({p.details})
-											</span>
-										) : (
-											<span>
-												<em>{p.venue}</em>
-												{p.details ? `, ${p.details}` : ''}
-											</span>
-										)}
-									</div>
-								</div>
-							</li>
-						))}
-					</ul>
-				</section>
+			sections.map((s, i) => (
+				<>
+					{i > 0 && ' · '}
+					<a href={`#${s.id}`}>{s.label}</a>
+				</>
 			))
 		}
-	</div>
+	</p>
+
+	{
+		sections.map((s) => (
+			<section id={s.id}>
+				<h2>{s.label}</h2>
+				{s.items.map((p) => (
+					<p>
+						{p.link ? <a href={p.link}>{p.title}</a> : p.title}
+						<br />
+						<span set:html={authorsHtml(p.authors)} />
+						<br />
+						{s.kind === 'patent' ? (
+							<span>
+								{p.venue} ({p.details}), {p.year}.
+							</span>
+						) : (
+							<span>
+								<i>{p.venue}</i>{`${p.details ? `, ${p.details}` : ''}, ${p.year}.`}
+							</span>
+						)}
+					</p>
+				))}
+			</section>
+		))
+	}
 </BaseLayout>
-
-<style>
-	.pub-container {
-		margin: 2em auto;
-		max-width: 48em;
-		padding: 0 1em;
-	}
-
-	.jump {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--sp-3);
-		margin: 0 0 var(--sp-8);
-	}
-
-	.jump a {
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: var(--track);
-		text-transform: uppercase;
-		color: var(--flow);
-		text-decoration: none;
-		border: 1px solid var(--line);
-		border-radius: 999px;
-		padding: 6px 14px;
-		transition: all 0.18s ease;
-	}
-
-	.jump a:hover {
-		border-color: var(--flow);
-		background: color-mix(in srgb, var(--flow) 8%, transparent);
-	}
-
-	.pub-section {
-		scroll-margin-top: 80px;
-	}
-
-	.pub-section + .pub-section {
-		margin-top: 2.75rem;
-	}
-
-	.pub-section-heading {
-		font-family: var(--font-text);
-		font-size: 0.85rem;
-		font-weight: 600;
-		color: var(--muted);
-		text-transform: uppercase;
-		letter-spacing: var(--track);
-		margin: 0 0 0.5rem;
-		padding-bottom: 0.4rem;
-		border-bottom: 1px solid var(--line);
-	}
-
-	.pub-list {
-		list-style: none;
-		padding-left: 0;
-		margin: 0;
-		font-size: 1rem;
-	}
-
-	.pub-entry {
-		display: flex;
-		align-items: baseline;
-		gap: 1rem;
-		padding: 0.7rem 0;
-		margin: 0;
-		border-bottom: 1px solid var(--line);
-		line-height: 1.4;
-	}
-
-	.pub-entry:last-child {
-		border-bottom: none;
-	}
-
-	.pub-year {
-		flex-shrink: 0;
-		min-width: 3rem;
-		font-size: 0.85rem;
-		color: var(--muted);
-		font-variant-numeric: tabular-nums;
-	}
-
-	.pub-body {
-		flex: 1;
-		min-width: 0;
-	}
-
-	.pub-title {
-		display: block;
-		font-family: var(--font-text);
-		font-size: 1rem;
-		font-weight: 600;
-		color: var(--ink);
-		text-decoration: none;
-		line-height: 1.4;
-	}
-
-	a.pub-title:hover {
-		color: var(--flow);
-	}
-
-	.pub-meta {
-		font-size: 0.82rem;
-		color: var(--muted);
-		margin-top: 0.2rem;
-		line-height: 1.45;
-	}
-</style>

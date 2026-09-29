@@ -12,6 +12,11 @@ export default defineConfig({
 	site: 'https://sharunkuhar.com',
 	trailingSlash: 'always',
 	server: { host: true },
+	// About and Contact were folded into the home page.
+	redirects: {
+		'/about': '/',
+		'/contact': '/',
+	},
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {

@@ -17,7 +17,7 @@ type Props = { post: CollectionEntry<'news'> };
 const { post } = Astro.props;
 const { title, description, pubDate } = post.data;
 const readingTimeEstimate = readingTime(post.body ?? '').text;
-const permalink = `${Astro.site?.href}news/${post.id}`;
+const permalink = `${Astro.site?.href}news/${post.id}/`;
 const { Content } = await render(post);
 const formattedDate = new Date(pubDate).toLocaleDateString('en-us', {
 	year: 'numeric',
@@ -26,41 +26,11 @@ const formattedDate = new Date(pubDate).toLocaleDateString('en-us', {
 });
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} current="news">
-	<header>
-		<p>{formattedDate} ~ {readingTimeEstimate}</p>
-		<h1>{title}</h1>
-		<hr />
-	</header>
-	<div class="container">
-		<article class="content">
-			<Content />
-		</article>
-		<hr />
-		<Bio />
-	</div>
+<BaseLayout title={`${title} — Sharun Kuhar`} description={description} permalink={permalink} current="news">
+	<h1>{title}</h1>
+	<p class="muted">{formattedDate} · {readingTimeEstimate}</p>
+	<article>
+		<Content />
+	</article>
+	<Bio />
 </BaseLayout>
-
-<style>
-	header {
-		text-align: center;
-	}
-
-	header h1 {
-		margin-bottom: 0.7em;
-	}
-
-	header p {
-		color: var(--muted);
-		text-transform: uppercase;
-		font-family: var(--font-text);
-		font-weight: 600;
-		font-size: 0.74rem;
-		letter-spacing: var(--track);
-	}
-
-	header hr {
-		min-width: 100px;
-		width: 30%;
-	}
-</style>
